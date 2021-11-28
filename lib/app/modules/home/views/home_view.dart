@@ -1,39 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_nav2_example/app/routes/app_pages.dart';
-import 'package:getx_nav2_example/main.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends StatefulWidget {
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> with AutomaticKeepAliveClientMixin, WidgetsBindingObserver, RouteAware {
+class HomeView extends GetView<HomeController> {
   final controller = Get.find<HomeController>();
-
-  @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    WidgetsBinding.instance?.addObserver(this);
+  
+  HomeView() {
+    print("aaa");
   }
 
-  @override
-  void dispose() {
-    MyApp.routeObserver.unsubscribe(this);
-    WidgetsBinding.instance?.removeObserver(this);
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
+    WidgetsBinding.instance?.addPostFrameCallback((Duration duration) => controller.buildComplete());
     return Scaffold(
       appBar: AppBar(
         title: Text('HomeView'),

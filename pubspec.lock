@@ -77,9 +77,11 @@ packages:
   get:
     dependency: "direct main"
     description:
-      name: get
-      url: "https://pub.flutter-io.cn"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "5cdee13f105b6b33c02903572656d545528e1f5c"
+      url: "https://github.com/jonataslaw/getx.git"
+    source: git
     version: "4.3.8"
   lints:
     dependency: transitive
