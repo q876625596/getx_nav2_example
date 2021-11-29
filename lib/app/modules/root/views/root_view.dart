@@ -7,29 +7,18 @@ import '../controllers/root_controller.dart';
 class RootView extends GetView<RootController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('RootView'),
-        centerTitle: true,
-      ),
-      body: Row(
-        children: [
-          Container(
-            color: Colors.blueAccent,
-            width: 300,
-            height: double.infinity,
-            child: Center(
-              child: Text("Left Panel"),
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: GetRouterOutlet(
-              initialRoute: Routes.HOME,
-            ),
-          )
-        ],
-      ),
+    return GetRouterOutlet.builder(
+      builder: (context, delegate, current) {
+        Get.put(delegate, tag: "root", permanent: true);
+        return GetRouterOutlet(
+          anchorRoute: Routes.ROOT,
+          initialRoute: Routes.INDEX,
+          // anchorRoute: '/',
+          // filterPages: (afterAnchor) {
+          //   return afterAnchor.take(1);
+          // },
+        );
+      },
     );
   }
 }

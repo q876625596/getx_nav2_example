@@ -31,9 +31,15 @@ class HomeView extends GetView<HomeController> {
               Padding(padding: EdgeInsets.all(20)),
               GestureDetector(
                 onTap: () {
-                  Get.rootDelegate.toNamed(Routes.SECOND);
+                  Get.find<GetDelegate>(tag: "index").toNamed(Routes.INDEX + Routes.SECOND);
                 },
                 child: Text("I am the first page of child routing, click me go to second child route"),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.find<GetDelegate>(tag: "root").toNamed(Routes.TEST);
+                },
+                child: Text("click me to test page"),
               ),
             ],
           ),

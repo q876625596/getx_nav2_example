@@ -79,7 +79,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "5cdee13f105b6b33c02903572656d545528e1f5c"
+      resolved-ref: "8501fee0eb5440cafb46450adf0e3927eada2db9"
       url: "https://github.com/jonataslaw/getx.git"
     source: git
     version: "4.3.8"

@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
-
 import 'package:getx_nav2_example/app/modules/home/bindings/home_binding.dart';
 import 'package:getx_nav2_example/app/modules/home/views/home_view.dart';
+import 'package:getx_nav2_example/app/modules/index/bindings/index_binding.dart';
+import 'package:getx_nav2_example/app/modules/index/views/index_view.dart';
 import 'package:getx_nav2_example/app/modules/root/bindings/root_binding.dart';
 import 'package:getx_nav2_example/app/modules/root/views/root_view.dart';
 import 'package:getx_nav2_example/app/modules/second/bindings/second_binding.dart';
@@ -18,27 +19,37 @@ class AppPages {
 
   static final routes = [
     GetPage(
-        name: _Paths.ROOT,
-        page: () => RootView(),
-        binding: RootBinding(),
-        preventDuplicates: true,
-        participatesInRootNavigator: true,
-        children: [
-          GetPage(
-            name: _Paths.HOME,
-            page: () => HomeView(),
-            binding: HomeBinding(),
-          ),
-          GetPage(
-            name: _Paths.SECOND,
-            page: () => SecondView(),
-            binding: SecondBinding(),
-          ),
-        ]),
-    GetPage(
-      name: _Paths.TEST,
-      page: () => TestView(),
-      binding: TestBinding(),
+      name: _Paths.ROOT,
+      page: () => RootView(),
+      binding: RootBinding(),
+      preventDuplicates: true,
+      participatesInRootNavigator: true,
+      children: [
+        GetPage(
+          name: _Paths.INDEX,
+          page: () => IndexView(),
+          binding: IndexBinding(),
+          participatesInRootNavigator: true,
+          children: [
+            GetPage(
+              name: _Paths.HOME,
+              page: () => HomeView(),
+              binding: HomeBinding(),
+            ),
+            GetPage(
+              name: _Paths.SECOND,
+              page: () => SecondView(),
+              binding: SecondBinding(),
+            ),
+          ],
+        ),
+        GetPage(
+          name: _Paths.TEST,
+          page: () => TestView(),
+          binding: TestBinding(),
+          participatesInRootNavigator: true,
+        ),
+      ],
     ),
   ];
 }

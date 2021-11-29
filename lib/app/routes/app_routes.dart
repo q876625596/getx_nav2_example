@@ -7,6 +7,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const SECOND = _Paths.SECOND;
   static const TEST = _Paths.TEST;
+  static const INDEX = _Paths.INDEX;
 }
 
 abstract class _Paths {
@@ -14,4 +15,5 @@ abstract class _Paths {
   static const HOME = '/home';
   static const TEST = '/test';
   static const SECOND = '/second';
+  static const INDEX = '/index';
 }
