@@ -32,6 +32,9 @@ dependencies:
   get:
     git:
       https://github.com/jonataslaw/getx.git
+  qlevar_router:
+    git:
+      https://github.com/q876625596/qlevar_router.git
 
 
   # The following adds the Cupertino Icons font to your application.

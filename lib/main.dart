@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_nav2_example/app/routes/app_pages.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 
 void main() {
-  runApp( MyApp());
+  QR.settings.enableDebugLog = true;
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   static final routeObserver = RouteObserver<PageRoute>();
+
   MyApp({Key? key}) : super(key: key);
 
   final delegate = GetDelegate();
@@ -17,7 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
       title: 'Flutter Demo',
-      getPages: AppPages.routes,
+      routeInformationParser: QRouteInformationParser(),
+      routerDelegate: QRouterDelegate(AppPages.routes, withWebBar: true),
       navigatorObservers: [
         routeObserver,
       ],

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_nav2_example/app/routes/app_pages.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  final controller = Get.find<HomeController>();
+  final logic = Get.put(HomeController());
+  final state = Get.find<HomeController>().state;
   
   HomeView() {
     print("aaa");
@@ -14,7 +16,7 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance?.addPostFrameCallback((Duration duration) => controller.buildComplete());
+    print("asas");
     return Scaffold(
       appBar: AppBar(
         title: Text('HomeView'),
@@ -31,13 +33,13 @@ class HomeView extends GetView<HomeController> {
               Padding(padding: EdgeInsets.all(20)),
               GestureDetector(
                 onTap: () {
-                  Get.find<GetDelegate>(tag: "index").toNamed(Routes.INDEX + Routes.SECOND);
+                  QR.toName(Routes.SECOND);
                 },
                 child: Text("I am the first page of child routing, click me go to second child route"),
               ),
               GestureDetector(
                 onTap: () {
-                  Get.find<GetDelegate>(tag: "root").toNamed(Routes.TEST);
+                  QR.toName(Routes.TEST);
                 },
                 child: Text("click me to test page"),
               ),

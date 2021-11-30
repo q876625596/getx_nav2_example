@@ -74,15 +74,27 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   get:
     dependency: "direct main"
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "8501fee0eb5440cafb46450adf0e3927eada2db9"
+      resolved-ref: dc353e25433144733906c4e5d4d2e8f6e4eb7559
       url: "https://github.com/jonataslaw/getx.git"
     source: git
-    version: "4.3.8"
+    version: "4.5.1"
+  js:
+    dependency: transitive
+    description:
+      name: js
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.6.3"
   lints:
     dependency: transitive
     description:
@@ -111,6 +123,15 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.0"
+  qlevar_router:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "54331fca20151270efbf626981797a09f744290d"
+      url: "https://github.com/q876625596/qlevar_router.git"
+    source: git
+    version: "1.5.7"
   sky_engine:
     dependency: transitive
     description: flutter

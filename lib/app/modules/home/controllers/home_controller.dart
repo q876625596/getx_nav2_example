@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
+import 'package:getx_nav2_example/app/modules/home/bindings/home_vm.dart';
 
-class HomeController extends FullLifeCycleController with FullLifeCycle{
+class HomeController extends FullLifeCycleController{
   //TODO: Implement HomeController
 
-
+  final state = HomeVM();
 
   buildComplete(){
     print("buildComplete");

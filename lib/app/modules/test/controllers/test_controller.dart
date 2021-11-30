@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:getx_nav2_example/app/modules/test/bindings/test_vm.dart';
 
 class TestController extends GetxController {
-  //TODO: Implement TestController
+  final state = TestVM();
   final textController = TextEditingController();
   final count = 0.obs;
   @override

@@ -1,14 +1,9 @@
-import 'package:get/get.dart';
-import 'package:getx_nav2_example/app/modules/home/bindings/home_binding.dart';
 import 'package:getx_nav2_example/app/modules/home/views/home_view.dart';
-import 'package:getx_nav2_example/app/modules/index/bindings/index_binding.dart';
 import 'package:getx_nav2_example/app/modules/index/views/index_view.dart';
-import 'package:getx_nav2_example/app/modules/root/bindings/root_binding.dart';
 import 'package:getx_nav2_example/app/modules/root/views/root_view.dart';
-import 'package:getx_nav2_example/app/modules/second/bindings/second_binding.dart';
 import 'package:getx_nav2_example/app/modules/second/views/second_view.dart';
-import 'package:getx_nav2_example/app/modules/test/bindings/test_binding.dart';
 import 'package:getx_nav2_example/app/modules/test/views/test_view.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 
 part 'app_routes.dart';
 
@@ -16,38 +11,34 @@ class AppPages {
   AppPages._();
 
   static const INITIAL = Routes.ROOT;
-
   static final routes = [
-    GetPage(
-      name: _Paths.ROOT,
-      page: () => RootView(),
-      binding: RootBinding(),
-      preventDuplicates: true,
-      participatesInRootNavigator: true,
+    QRoute(path: Routes.ROOT, builder: () => RootView()),
+    QRoute(path: Routes.TEST, builder: () => TestView()),
+    QRoute.withChild(
+      name: Routes.INDEX,
+      path: Routes.INDEX,
+      builderChild: (r) => IndexView(r),
+      initRoute: Routes.HOME,
       children: [
-        GetPage(
-          name: _Paths.INDEX,
-          page: () => IndexView(),
-          binding: IndexBinding(),
-          participatesInRootNavigator: true,
-          children: [
-            GetPage(
-              name: _Paths.HOME,
-              page: () => HomeView(),
-              binding: HomeBinding(),
-            ),
-            GetPage(
-              name: _Paths.SECOND,
-              page: () => SecondView(),
-              binding: SecondBinding(),
-            ),
+        QRoute(
+          name: Routes.HOME,
+          path: Routes.HOME,
+          builder: () => HomeView(),
+          middleware: [
+            QMiddlewareBuilder(onEnterFunc: () async {
+              print('-- Enter Parent page --');
+            }, onExitFunc: () async {
+              print('-- Exit Parent page --');
+            }, onMatchFunc: () async {
+              print('-- Parent page Matched --');
+            }),
           ],
         ),
-        GetPage(
-          name: _Paths.TEST,
-          page: () => TestView(),
-          binding: TestBinding(),
-          participatesInRootNavigator: true,
+        QRoute(
+          name: Routes.SECOND,
+          path: Routes.SECOND,
+          builder: () => SecondView(),
+          pageType: QSlidePage(),
         ),
       ],
     ),

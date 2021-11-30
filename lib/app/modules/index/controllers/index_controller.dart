@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:getx_nav2_example/app/modules/index/bindings/index_vm.dart';
 
 class IndexController extends GetxController {
-  //TODO: Implement IndexController
+  final state = IndexVM();
+
 
   final count = 0.obs;
   @override
